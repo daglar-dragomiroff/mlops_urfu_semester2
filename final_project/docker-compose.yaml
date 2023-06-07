@@ -34,8 +34,7 @@ x-airflow-common:
 #    - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/dags:/opt/airflow/dags
     - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/log:/opt/airflow/logs
     - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/plugins:/opt/airflow/plugins
-    - ${AIRFLOW_PROJ_DIR:-.}/datasets
-  user: "${AIRFLOW_UID:-50000}:0"
+    - ${AIRFLOW_PROJ_DIR:-.}/datasets:/opt/datasets
   depends_on:
     &airflow-common-depends-on
     redis:

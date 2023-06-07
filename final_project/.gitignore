@@ -1,4 +1,3 @@
-sf-scheduler/*
-volumes/*
-logs/*
-plugins/*
+logs/
+plugins/
+volumes/
