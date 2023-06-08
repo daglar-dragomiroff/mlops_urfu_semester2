@@ -3,6 +3,9 @@ import pickle
 import pytest
 import numpy as np
 
+from airflow.models import DAG
+from airflow.operators.python import PythonOperator
+
 def load_model():
     
     # Загружаем модель + возвращаем ее
