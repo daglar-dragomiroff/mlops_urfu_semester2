@@ -1,6 +1,7 @@
 from airflow.models import DAG
 from airflow.operators.python import PythonOperator
 
+import sklearn
 from sklearn.metrics import mean_squared_error
 import pickle
 import pytest
