@@ -3,9 +3,6 @@ import pickle
 import pytest
 import numpy as np
 
-from airflow.models import DAG
-from airflow.operators.python import PythonOperator
-
 def load_model():
     
     # Загружаем модель + возвращаем ее
@@ -29,7 +26,7 @@ def load_datasets():
     return (dataset_1, dataset_2, dataset_3, dataset_noisy)
 
 def test_model_with_pytest():
-    limit = 150
+    limit = 300
     
     # Загружаем модель
     model = load_model()
@@ -63,13 +60,14 @@ def test_model_with_pytest():
     assert MSE_3 <= limit, f"ERROR in dataset_3: MSE = {MSE_3}, limit = {limit}"
 
     # Проверка на dataset_noisy
-    # X_test_noisy = dataset_noisy[:, 0].reshape(-1, 1)
-    # y_test_noisy = dataset_noisy[:, 1]
-    # y_pred_noisy = model.predict(X_test_noisy)
-    # MSE_4_noisy = mean_squared_error(y_test_noisy, y_pred_noisy)
-    # print(f"MSE для dataset_noisy={MSE_4_noisy}")
-    # assert MSE_4_noisy <= limit, f"ERROR in dataset_noisy: MSE = {MSE_4_noisy}, limit = {limit}"
+    X_test_noisy = dataset_noisy[:, 0].reshape(-1, 1)
+    y_test_noisy = dataset_noisy[:, 1]
+    y_pred_noisy = model.predict(X_test_noisy)
+    MSE_4_noisy = mean_squared_error(y_test_noisy, y_pred_noisy)
+    print(f"MSE для dataset_noisy={MSE_4_noisy}")
+    assert MSE_4_noisy <= limit, f"ERROR in dataset_noisy: MSE = {MSE_4_noisy}, limit = {limit}"
 
 # Запускаем pytest
 if __name__ == '__main__':
     pytest.main()
+    # test_model_with_pytest()

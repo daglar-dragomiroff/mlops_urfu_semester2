@@ -30,10 +30,10 @@ x-airflow-common:
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     # WARNING: Use _PIP_ADDITIONAL_REQUIREMENTS option ONLY for a quick checks
     # for other purpose (development, test and especially production usage) build/extend Airflow image.
-  volumes:
+  # volumes:
 #    - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/dags:/opt/airflow/dags
-    - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/log:/opt/airflow/logs
-    - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/plugins:/opt/airflow/plugins
+    # - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/log:/opt/airflow/logs
+    # - ${AIRFLOW_PROJ_DIR:-.}/volumes/airflow/plugins:/opt/airflow/plugins
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     &airflow-common-depends-on
