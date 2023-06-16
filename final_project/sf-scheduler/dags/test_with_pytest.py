@@ -153,3 +153,14 @@ with DAG(dag_id='create_load_test', default_args=args, schedule=None) as dag:
     test_model_with_pytest = PythonOperator(task_id='test_model_with_pytest',
                                             python_callable=test_model_with_pytest,
                                             dag=dag)
+
+with DAG(dag_id='create_load_test', default_args=args, schedule=None) as dag:
+    create_dataset = PythonOperator(task_id='create_datasets',
+                                    python_callable=create_datasets,
+                                    dag=dag)
+    create_model = PythonOperator(task_id='create_model',
+                                    python_callable=create_model,
+                                    dag=dag)
+    test_model_with_pytest = PythonOperator(task_id='test_model_with_pytest',
+                                            python_callable=test_model_with_pytest,
+                                            dag=dag)
