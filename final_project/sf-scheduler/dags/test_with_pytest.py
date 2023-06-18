@@ -78,19 +78,6 @@ def create_model():
     with open('model.pkl', 'wb') as file:
         pickle.dump(model, file)
 
-def create_model():
-    dataset_1 = np.loadtxt('datasets/dataset_1.txt')
-
-    # Обучаем модель на dataset_1
-    model = LinearRegression()
-    X_train = dataset_1[:, 0].reshape(-1, 1)
-    y_train = dataset_1[:, 1]
-    model.fit(X_train, y_train)
-
-    # Сохранение модели
-    with open('model.pkl', 'wb') as file:
-        pickle.dump(model, file)
-
 def load_model():
     
     # Загружаем модель + возвращаем ее
@@ -155,17 +142,6 @@ def test_model_with_pytest():
     MSE_4_noisy = mean_squared_error(y_test_noisy, y_pred_noisy)
     print(f"MSE для dataset_noisy={MSE_4_noisy}")
     assert MSE_4_noisy <= limit, f"ERROR in dataset_noisy: MSE = {MSE_4_noisy}, limit = {limit}"
-
-with DAG(dag_id='create_load_test', default_args=args, schedule=None) as dag:
-    create_dataset = PythonOperator(task_id='create_datasets',
-                                    python_callable=create_datasets,
-                                    dag=dag)
-    create_model = PythonOperator(task_id='create_model',
-                                    python_callable=create_model,
-                                    dag=dag)
-    test_model_with_pytest = PythonOperator(task_id='test_model_with_pytest',
-                                            python_callable=test_model_with_pytest,
-                                            dag=dag)
 
 with DAG(dag_id='create_load_test', default_args=args, schedule=None) as dag:
     create_dataset = PythonOperator(task_id='create_datasets',
