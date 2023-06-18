@@ -1,5 +1,10 @@
 # mlops_urfu_semester2
-Laboratory work on MLOps master's degree at the Ural Federal University
+Лабораторные работы по дисциплине "Автоматизация администрирования MLOps".<br>
+Работу выполнили студенты 1-го курса:
+- Драгомирский Радмил
+- Шалагин Дмитрий
+- Игорь Пластов
+- Письмаров Михаил
 
 # Practices for MLops course UrFU + SkillFactory
 ## Module 1
@@ -82,7 +87,7 @@ Model test accuracy is: 0.876
 
 </details>
 
-## Module 6
+## Module 5
 <details>
 
 ### Тестирование качества работы моделей машинного обучения
